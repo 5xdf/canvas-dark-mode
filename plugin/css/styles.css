@@ -205,3 +205,12 @@ code{
     background-color: white !important;
     color: black !important;
 }
+.css-8bodfv-text {
+    color: gray;
+}
+.menu-item__badge {
+    background-color: #282828;
+}
+.menu-item__text {
+    color: white;
+}
