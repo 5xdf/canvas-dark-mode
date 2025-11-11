@@ -5,7 +5,8 @@ name: Build & Deploy
 # Controls when the action will run. 
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
-
+  push:
+    branches: ["main"]
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -36,9 +37,3 @@ jobs:
           path: extension.zip
           # The desired behavior if no files are found using the provided path
           if-no-files-found: error
-          
-      - name: Create GitHub Release
-        uses: softprops/action-gh-release@v2
-        with:
-          files: extension.zip # Upload the created artifact
-          generate_release_notes: true # Automatically generate release notes
