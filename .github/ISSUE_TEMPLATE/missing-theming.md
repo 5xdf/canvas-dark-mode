@@ -2,7 +2,7 @@
 name: Missing theming
 about: Use this issue template for when you find a spot that was missed in the theme
 title: "[THEME FIX]"
-labels: enhancement
+labels: theme fix
 assignees: 5xdf
 
 ---
