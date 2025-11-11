@@ -208,9 +208,9 @@ code{
 .css-8bodfv-text {
     color: gray;
 }
-.menu-item__badge {
+/* .menu-item__badge {
     background-color: #282828;
-}
+} */
 .menu-item__text {
-    color: white;
+    color: black;
 }
