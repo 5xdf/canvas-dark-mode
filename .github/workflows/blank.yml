@@ -69,10 +69,10 @@ jobs:
           # Use the calculated tag from the previous step. This action creates the tag automatically.
           tag_name: ${{ steps.versioning.outputs.new_tag }}
           name: Release ${{ steps.versioning.outputs.new_tag }}
-          body: Automated release containing the latest build of the extension.
+          body: This release was created automatically.
           # Attach the zipped extension to the release
           files: extension.zip 
-          draft: false
+          draft: true
           prerelease: false
         env:
           # GITHUB_TOKEN is automatically provided and required for creating the release
