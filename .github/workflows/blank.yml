@@ -26,17 +26,3 @@ jobs:
 
       - name: Zip Plugin
         run: zip -r extension.zip ./plugin
-        
-      - name: Upload to Chrome Webstore
-        uses: trmcnvn/chrome-addon@v2
-        with:
-          # ID of the extension that you are updating
-          extension: jbfgmfpakhabhhpefblmehnadjjkadna
-          # Path to a .zip of your addon
-          zip: ./extension.zip
-          # Google OAuth2 client id
-          client-id: ${{ secrets.CHROME_CLIENT_ID }}
-          client-secret: ${{ secrets.CHROME_CLIENT_SECRET }}
-          refresh-token: ${{ secrets.CHROME_REFRESH_TOKEN }}
-
-
