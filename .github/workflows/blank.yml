@@ -80,7 +80,7 @@ jobs:
           
       # 4. Upload a Build Artifact (for the GitHub Actions UI)
       - name: Upload Build Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4 # <<< CHANGED from v3 to v4
         with:
           name: extension
           path: extension.zip
