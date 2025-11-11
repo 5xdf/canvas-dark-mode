@@ -38,14 +38,14 @@ jobs:
               per_page: 100, // Fetch up to 100 tags
             });
 
-            // Filter for tags starting with 'v1.' and find the highest patch number
+            // Filter for tags that strictly match the v1.x pattern (e.g., v1.0, v1.5)
             const v1Tags = tags
               .map(tag => tag.name)
-              .filter(name => name.startsWith('v1.'))
+              .filter(name => /^v1\.\d+$/.test(name))
               .map(name => ({
                 original: name,
-                // Extract the number after 'v1.'
-                patch: parseInt(name.substring(2))
+                // FIX: Extract the number after 'v1.' by splitting on '.' and taking the second element
+                patch: parseInt(name.split('.')[1], 10)
               }))
               .filter(tag => !isNaN(tag.patch))
               .sort((a, b) => b.patch - a.patch); // Sort descending
@@ -69,10 +69,10 @@ jobs:
           # Use the calculated tag from the previous step. This action creates the tag automatically.
           tag_name: ${{ steps.versioning.outputs.new_tag }}
           name: Release ${{ steps.versioning.outputs.new_tag }}
-          body: This release was created automatically.
+          body: Automated draft release containing the latest build of the extension.
           # Attach the zipped extension to the release
           files: extension.zip 
-          draft: true
+          draft: true # CHANGED to create a draft release
           prerelease: false
         env:
           # GITHUB_TOKEN is automatically provided and required for creating the release
@@ -80,7 +80,7 @@ jobs:
           
       # 4. Upload a Build Artifact (for the GitHub Actions UI)
       - name: Upload Build Artifact
-        uses: actions/upload-artifact@v4 # <<< CHANGED from v3 to v4
+        uses: actions/upload-artifact@v4
         with:
           name: extension
           path: extension.zip
