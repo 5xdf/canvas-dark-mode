@@ -35,6 +35,6 @@ jobs:
           # Artifact name
           name: extension
           # A file, directory or wildcard pattern that describes what to upload
-          path: extension.zip
+          path: ./plugin
           # The desired behavior if no files are found using the provided path
           if-no-files-found: error
